@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="" data-ng-app="GoogleDirection">
+<head>
+    <meta t="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route & Weather Assistance</title>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular-sanitize.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWhSE1HAi753_M8rcFTfcbBXUQInf8y6c&v=3.exp&sensor=true"></script>-->
+
+    <script src="Scripts/Angular.js"></script>
+    <script src="Scripts/googleMap.js"></script>
+    <script src="Scripts/Sanitize.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+
+<body>
+
+
+
+<div class="wrapp" ng-controller="googlemapoutput">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Routing and Weather Assistance</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-table">
+        <div class="row vertical-center-row">
+
+    <div class="row">
+
+        <table width="100%">
+
+            <tr>
+                <td >
+                    <input type="text"  ng-model="startlocation" id="startlocation" class="form-control" placeholder="Source" />
+
+                </td>
+                <td>
+                    <input type="text"  ng-model="endlocation" id="endlocation" class="form-control" placeholder="Destination" />
+
+                </td>
+
+                <td  align="center">
+                    <button id="btn" ng-click="calcRoute()" class="btn btn-info" >
+                        Get Direction
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+
+        <br/></br>
+    </div>
+    <div id="map-canvas" style="height: 400px;width: 100%"></div>
+    <div >
+        <!--<button id="btnWeather" ng-click="getWeather()"> Show Weather </button>-->
+        <br />
+        <br />
+
+        <div >
+            <table style="align-content: center" class="table table-bordered table-condensed">
+                <tr><td>
+              Weather at Stating Location </td>
+              <td align="right" >  Weather at Destination Location</td>
+                </tr>
+                </table>
+        <div class="weatherModule" style="float:left">
+            <p class="currentConditions" ng-bind-html="currentweather.html"></p>
+            <!--<p ng-bind-html="myText"></p>-->
+            <div class="currentIcon" ng-bind-html="currentIcon.html"></div>
+        </div>
+
+        <div class="weatherModule" style="float:right">
+            <p class="DestcurrentConditions" ng-bind-html="Destcurrentweather.html"></p>
+            <!--<p ng-bind-html="myText"></p>-->
+            <div class="currentIcon" ng-bind-html="DestcurrentIcon.html"></div>
+        </div>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
+
+
