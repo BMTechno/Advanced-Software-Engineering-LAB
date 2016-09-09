@@ -7,12 +7,8 @@ AddressBook.controller('PersonController', function ($scope) {
 
 });
 
-
 angular.module('GoogleDirection', ['ngSanitize'])
-    .controller('googlemapoutput', function ($scope, $http ,$window) {
-
-
-
+    .controller('googlemapoutput', function ($scope, $http ,$location) {
         var map;
         var mapOptions;
         var directionsDisplay = new google.maps.DirectionsRenderer({
@@ -240,9 +236,6 @@ angular.module('GoogleDirection', ['ngSanitize'])
 
         google.maps.event.addDomListener(window, 'load', $scope.initialize);
 
-
-
-
         //City and State
 
         $scope.codeLatLng = function () {
@@ -286,16 +279,39 @@ angular.module('GoogleDirection', ['ngSanitize'])
 
         }
 
+        $scope.registerUser = function(username,password,cnf_password,emailid)
+        {
 
+            if (password === cnf_password){
+                localStorage.setItem('username',username);
+                localStorage.setItem('password',password);
+                localStorage.setItem('emailid',emailid);
+                alert(localStorage.getItem('emailid'));
+                window.location = "/Lab2_Source/Login.html";
+             }
+            else {
+                alert("saiteja" + localStorage.getItem('username'));
+            }
 
-        $scope.registerUser = function() {
-                        alert("saiteja");
-            $window.location.href( '/Login.html');
+        };
 
-                    };
+        $scope.validateuser = function(username,password)
+        {
 
-            //localStorage.setItem('username','userName');
+            if ( localStorage.getItem('username') === username){
 
+                if ( localStorage.getItem('password') === password){
+                    window.location = "/Lab2_Source/Home.html";
+                }
+                else{
+                    alert("wrong password enter again" + localStorage.getItem('emailid'));
+                }
+            }
+            else {
+                alert("wrong username enter again" + localStorage.getItem('emailid'));
+            }
+
+        };
     });
 
 
