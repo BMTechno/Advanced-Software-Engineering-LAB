@@ -14,7 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-<body data-ng-app="myApp"  >
+
+
+<body data-ng-app="myApp" background="black-wallpaper.jpg" class="glyphicon-text-background" >
+
 
 <div>
 
@@ -37,22 +40,24 @@
             <div class="container container-table">
                 <div class="row vertical-center-row" ng-controller="lab9">
 
-                    <table style="align-content: center" class="table table-bordered table-condensed">
+                    <table style="align-content: center" class="table table-bordered table-condensed thead-inverse" >
                          
                           
-                        <tr>
-                            <td align="center">
+                        <tr >
+                            <td  align="center">
                                 <form>
 
                                     <div ng-click="qetdetails()">
-                                        <button type="submit" class="btn btn-info"   >Get Details</button> <input type="text" >
+                                        <input NG-MODEL="name_p" type="text" >
+                                        <button type="submit" class="btn btn-info"   >Get Details</button>
                                     </div>
                                 </form>
                             </td>
 
                         </tr>
+
                         <tr>
-                            <td>
+                            <td >
                                 {{detail1}}
                             </td>
                         </tr>

@@ -30,6 +30,18 @@
     margin: 0 .75em;
 }
 
+.background-image {
+    background-image: url('../black-wallpaper.jpg');
+    width: 100vw;
+    height: 100vh;
+
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+}
+
 .padding {
     padding-left: 2cm;
 }

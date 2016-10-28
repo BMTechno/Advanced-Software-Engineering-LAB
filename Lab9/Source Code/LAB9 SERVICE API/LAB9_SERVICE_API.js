@@ -4,12 +4,15 @@
 var express = require('express');
 var app = express();
 var request = require('request');
-app.get('/getDetails', function (req, res) {
+app.get('/getDetails',function (req, res) {
     var result={
         'description': []
     };
 
-    request('https://kgsearch.googleapis.com/v1/entities:search?query=taylor+swift&key=AIzaSyC_JB8BlVHxXdKPBv6kPE9JniJpbBlVNWg&limit=5&indent=True', function (error, response, body) {
+    console.log(req.query["name_p"]);
+    //console.log(res);
+
+    request('https://kgsearch.googleapis.com/v1/entities:search?query=' + req.query["name_p"] + '&key=AIzaSyC_JB8BlVHxXdKPBv6kPE9JniJpbBlVNWg&limit=5&indent=True', function (error, response, body) {
         //Check for error
         if(error){
             return console.log('Error:', error);
