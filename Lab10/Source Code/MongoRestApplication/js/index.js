@@ -30,8 +30,8 @@ myapp.controller('MongoRestController',function($scope,$http,$location){
         req.success(function(data, status, headers, config) {
             $scope.message = data;
             console.log(data);
-            alert("saiteja@gmail.com" + " " +"Registered Successfully.");
-            window.location = "/Tutorial%2010%20-%20Node%20JS%20&%20Mongo%20DB/MongoRestApplication/Main.html";
+            alert($scope.email.toString() + " " +"Registered Successfully.");
+            window.location = "MongoRestApplication/Main.html";
         });
         req.error(function(data, status, headers, config) {
             alert( "failure message: " + JSON.stringify({data: data}));
@@ -45,15 +45,17 @@ myapp.controller('MongoRestController',function($scope,$http,$location){
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         }
-        window.location = "/Tutorial%2010%20-%20Node%20JS%20&%20Mongo%20DB/MongoRestApplication/update.html";
-        var req = $http.post('http://127.0.0.1:8081/update',$scope.formData);
+
+        var req = $http.post('http://127.0.0.1:8081/update_user',$scope.formData);
         req.success(function(data, status, headers, config) {
             $scope.message = data;
             console.log(data);
+            alert("updated data successfully.");
+            window.location = "/Tutorial%2010%20-%20Node%20JS%20&%20Mongo%20DB/MongoRestApplication/update.html";
 
         });
         req.error(function(data, status, headers, config) {
-            //alert( "failure message: " + JSON.stringify({data: data}));
+            alert( "failure message: " + JSON.stringify({data: data}));
         });
     };
 
@@ -64,16 +66,17 @@ myapp.controller('MongoRestController',function($scope,$http,$location){
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         }
-        var req = $http.post('http://127.0.0.1:8081/delete',$scope.formData);
-        alert("Deleted user: Saiteja@gmail.com");
-        window.location = "/Tutorial%2010%20-%20Node%20JS%20&%20Mongo%20DB/MongoRestApplication/index.html";
+
+
         req.success(function(data, status, headers, config) {
             $scope.message = data;
             console.log(data);
-
+            var req = $http.post('http://127.0.0.1:8081/delete',$scope.formData);
+            alert("Deleted user:" + $scope.email.toString());
+            window.location = "MongoRestApplication/index.html";
         });
         req.error(function(data, status, headers, config) {
-            //alert( "failure message: " + JSON.stringify({data: data}));
+            alert( "failure message: " + JSON.stringify({data: data}));
         });
     };
 
@@ -84,32 +87,14 @@ myapp.controller('MongoRestController',function($scope,$http,$location){
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         }
-        var req = $http.post('http://127.0.0.1:8081/read',$scope.formData);
+        var req = $http.post('http://127.0.0.1:8081/get_users');
         req.success(function(data, status, headers, config) {
             $scope.message = data;
             console.log(data);
         });
         req.error(function(data, status, headers, config) {
-           // alert( "failure message: " + JSON.stringify({data: data}));
+            alert( "failure message: " + JSON.stringify({data: data}));
         });
     };
 
-    $scope.updata = function(){
-
-        var config = {
-            headers : {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
-        }
-        alert("updated data successfully.");
-        window.location = "/Tutorial%2010%20-%20Node%20JS%20&%20Mongo%20DB/MongoRestApplication/index.html"
-        var req = $http.post('http://127.0.0.1:8081/read',$scope.formData);
-        req.success(function(data, status, headers, config) {
-            $scope.message = data;
-            console.log(data);
-        });
-        req.error(function(data, status, headers, config) {
-           // alert( "failure message: " + JSON.stringify({data: data}));
-        });
-    };
 });
