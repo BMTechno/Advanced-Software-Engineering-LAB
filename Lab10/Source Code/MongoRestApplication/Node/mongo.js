@@ -33,7 +33,7 @@ var insertDocument = function(db, data, callback) {
             res.write("Registration Failed, Error While Registering");
             res.end();
         }
-        console.log("Inserted a document into the restaurants collection.");
+        console.log("Inserted a document into the ABC collection.");
         callback();
     });
 };
